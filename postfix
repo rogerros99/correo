@@ -1,0 +1,49 @@
+apt-get install postfix postfix-doc postfix-pcre
+sitio de internet
+rros.lan
+
+nano /etc/postfix/main.cf
+mydestination = rros.lan
+mynetworks = 172.0.0.1/8, 10.1.6.0/24
+
+systemctl reload postfix
+
+telnet 172.0.0.1 25
+ehlo hola
+
+useradd -m -d /home/fmaster -s /bin/bash fmaster
+passwd fmaster
+
+telnet localhost 25
+hello root
+mail from: root@rros.lan
+rcpt to: fmaster@rros.lan
+data
+Hola que lo ke
+.
+
+su fmaster
+mail
+
+courier
+apt-get install courier-imap
+desea crear los directorios para la administracion basado en web --> no
+nano /etc/postfix/main.cf
+home_mailbox = Maildir/
+mail spool directory= /home
+
+systemctl restart postfix
+
+adduser new1
+adduser new2
+cd /etc/courier
+pw2userdb > userdb
+chmod 700 userdb
+makeuserdb
+nano /etc/courier/imapd
+IMAP_MAILBOX_SANITY_CHECK=0
+/etc/init.d/courier-imap restart
+/etc/init.d/courier-authdaemon restart
+telnet localhost 143
+a1 login new1 Admin1234-
+a2 examine inbox
