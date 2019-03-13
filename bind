@@ -1,0 +1,24 @@
+apt-get install bind9
+nano named.conf.local
+zone "rros.lan" {
+  type master;
+  file "/etc/bind/db.rros";
+  allow-query {172.0.0.1; 10.1.6.0/24;}
+};
+zone "6.1.10.in-addr.arpa" {
+  type master;
+  file "/etc/bind/db.192";
+  allow-query {172.0.0.1; 10.1.6.0/24;}
+};
+nano db.rros
+rros.lan.  IN  NS  rros.rros.lan.
+rros  IN  A 10.1.6.10
+rros.lan  IN  MX  10  correo.rros.lan.
+correo  IN  A 10.1.6.10
+
+nano db.192
+@ IN  NS  rros.rros.lan.
+10  IN  PTR rros.rros.lan.
+10  IN  PTR rros.rros.lan.
+
+nslookup set q=any
