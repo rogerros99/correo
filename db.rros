@@ -8,7 +8,7 @@ $TTL 604800
 ;
 @ IN NS rros.lan.
 @ IN A 10.1.6.47
-marc.lan. IN MX 10 correo.rros.lan
+rros.lan. IN MX 10 correo.rros.lan.
 correo IN A 10.1.6.47
 www IN A 10.1.6.47
 ssh IN CNAME www
