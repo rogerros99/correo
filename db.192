@@ -1,0 +1,13 @@
+$TTL 604800
+@ IN SOA rros.lan. root.rros.lan. (
+1 ; Serial
+604800 ; Refresh
+86400 ; Retry
+2419200 ; Expire
+604800 ) ; Negative Cache TTL
+;
+@ IN NS rros.lan.
+47 IN PTR rros.lan.
+47 IN PTR correo.rros.lan
+47 IN PTR www.rros.lan.
+47 IN PTR ssh.rros.lan.
