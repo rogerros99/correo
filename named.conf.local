@@ -1,0 +1,11 @@
+zone "rros.lan" {
+	type master;
+	file "/etc/bind/db.rros";
+	allow-query {127.0.0.1; 10.1.6.0/24;};
+};
+
+zone "6.1.10.in-addr.arpa" {
+	type master;
+	file "/etc/bind/db.192";
+	allow-query {127.0.0.1; 10.1.6.0/24;};
+};
